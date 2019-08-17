@@ -1,162 +1,120 @@
-// View this code at: https://repl.it/@istrate
-
-let cars = [{
-  brand: 'mazda',
-  miles: 5000
-},{
-  brand: 'ford',
-  miles: 100000
-},{
-  brand: 'honda',
-  miles: 40000
-},{
-  brand: 'hyundai',
-  miles: 0
-}]
+// let cars = [{
+//   brand: 'mazda',
+//   miles: 5000
+// },{
+//   brand: 'ford',
+//   miles: 100000
+// },{
+//   brand: 'honda',
+//   miles: 40000
+// },{
+//   brand: 'hyundai',
+//   miles: 0
+// }]
 
 // Find the honda object, given an array of car objects, using a for loop (do not use built-in array functions).  Let the result be null if there's no honda in the array.
 
-// in a function
-
-function findHonda(cars) {
-  for(let car of cars) {
-    if(car.brand === 'honda') {
-      return car
-    }
-  }
-  return null
-}
-
-// in scope
-
-let honda = null
-
-for(let car of cars) {
-  if(car.brand === 'honda') {
-    honda = car
-  }
-}
-
-console.log(findHonda(cars))
-console.log(honda)
 
 
 // Practice: Make an array of animal objects, each with "species" and "averageLifespan" properties.  Find the lion object, both with a function, and in scope, using a for loop (do not use built-in array functions).
 
+/*
+  facts
+    jaguar: 12
+    lynx: 7
+    lion: 14
 
-     let animals = [{
-            species: 'lion',
-            averageLifespan: 14
-        },{
-            species: 'Squirrel',
-                averageLifespan: 10
-        },{
-            species: 'chicken',
-                averageLifespan: 7
-        }];
+*/
 
-        function findLion(animals) {
-            for (let animal of animals) {
-                if (animals.species === lion) {
-                    return animal;
-                }
-            } return null
-        }
-    
-    let lion = null
 
-    let(animal of animals) {
-      if(animal.species === 'lion'){
-        lion = animal
-      }
+
+
+let animals = [{
+  species: "Jaguar",
+  lifespan: 12
+},
+{
+  species: "lynx",
+  lifespan: 7
+},
+{
+  species: "lion",
+  lifespan: 14
+},
+{
+  species: "leopard",
+  lifespan: 12
+}
+];
+
+// console.log(animals);
+
+let foundLion = false;
+
+// For for-of loops (L57) variable has to be singular 'of' the array. 
+
+function findLion(animals) {
+  for (let animal of animals) {    // creating variable and adding each element then checking it, then changing its contents.
+    if (animal.species === "lion") {
+      foundLion = true;
+      console.log(animal.species + " average lifespan is " + animal.lifespan);
     }
-
-    console.log(findLion(animals));
-    console.log(lion);
-
-
-
-// Find the car with the highest number of miles
-
-
-
-let currentMaximumMiles = -1
-let currentMaximumCar = null
-
-for(let car of cars) {
-  if(car.miles > currentMaximumMiles) {
-    currentMaximumCar = car
-    currentMaximumMiles = car.miles
   }
+
+
+
+  // for (var i = 0; i < animals.length; i++) {
+  //   if (animals[i].species == "lion") {
+  //     foundLion = true;
+  //     console.log(animals[i].species + " average lifespan is " + aniamls[i].lifespan);
+  //   }
+  // }
 }
 
-// console.log(currentMaximumCar)
+// findLion(animals);
 
+// console.log(foundLion)
 
 // Practice: Find the animal with the shortest average lifespan.
 
 
-
-// Sort the array by highest miles first, using a loop (do not use built-in array sort functions).
-
-
-function findCarWithHighestMiles(cars) {
-  let currentMaximumMiles = -1
-  let currentMaximumCar = null
-
-  for(let car of cars) {
-    if(car.miles > currentMaximumMiles) {
-      currentMaximumCar = car
-      currentMaximumMiles = car.miles
+const shortestLifespan = (animals) => {
+  let shortest = 100; // could use Number.MAX javascript has a maximum safe value
+  let speciez = "";
+  for (let animal of animals) {
+    if (animal.lifespan < shortest) {
+      shortest = animal.lifespan;
+      speciez = animal.species;
     }
   }
+  // console.log("the shortest lifespan is " + shortest + " and is the " + speciez);
+  return speciez;
+}
 
-  return currentMaximumCar
+// shortestLifespan(animals);
+
+// Sort animal array from shortest to longest lifespan
+
+const youngestToOldestLifespan = (animals) => {
+  let sorted = [];
+  let unsorted = animals;
+  let shortestIndex;
+  // let shortestName;
+
+  while (animals.length > 0) {
+    sorted.push(shortestLifespan(unsorted));
+    shortestIndex = unsorted.indexOf(sorted[0]);
+    unsorted.splice(shortestIndex);
+  }
+
+  console.log(sorted);
 }
 
 
-let sortedCars = []
 
-while(cars.length > 0) {
-  let maximumCar = findCarWithHighestMiles(cars)
-  sortedCars.push(maximumCar)
-  let maximumIndex = cars.indexOf(maximumCar)
-  cars.splice(maximumIndex, 1)
-}
-
-// console.log(sortedCars)
-// console.log(cars)
-
-
-// Practice: Sort the animals array from shortest to longest lifespan.
+youngestToOldestLifespan(animals);
 
 
 
 
-// Get an array of cars that have a hatchback option.
-
-// let cars = [{
-//   brand: 'mazda',
-//   miles: 5000,
-//   hatchbackOption: true
-// },{
-//   brand: 'ford',
-//   miles: 100000,
-//   hatchbackOption: false
-// },{
-//   brand: 'honda',
-//   miles: 40000,
-//   hatchbackOption: true
-// },{
-//   brand: 'hyundai',
-//   miles: 0,
-//   hatchbackOption: false
-// }]
-
-
-// Practice: Add a "mammal" boolean property to your animals.  Find the mammals in the array.
-
-
-// bubble sort grows quadratically ( O(n) )
-// bubble sort is not preferred by a developer or employer because it's slow and bad on memory.
 
