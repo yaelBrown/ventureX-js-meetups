@@ -1,0 +1,25 @@
+
+
+node index.js
+  runs application
+
+git init 
+  initializes folder as a git project
+
+nano .git/config
+  (add username and email if you want to configure it differently)
+
+npm install --save express
+  look 
+
+in .gitignore, don't use './' for directory names
+
+dependency trees
+
+copy example from express.com > getting started
+
+analagus
+persistant layer technologies
+
+insomnia (for mac)- http request program
+advanced rest client (windows) - http request program
