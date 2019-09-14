@@ -1,0 +1,17 @@
+More rest API info
+
+- rest does not rely on session state
+    each request is independent of any other request
+      if theres auth, has to be done on every request
+- every url on rest api refers to a resource
+    resource = type of thing on which you want to operate
+    instead of entities you call them resources
+  http verbs built into the protocol
+    get
+    post
+    put/patch
+    delete
+  RPC - remote procedure call
+  Endpoints would be verbs so you can perform operations on a class
+
+  can use route parameters in the middle or at the end. 
